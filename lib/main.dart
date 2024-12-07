@@ -1,8 +1,10 @@
-import 'package:bloc_counter/conunter_page.dart';
-import 'package:bloc_counter/counter_bloc/counter_bloc.dart';
+import 'package:bloc_counter/ui/conunter_page.dart';
+
+import 'package:bloc_counter/featurs/counter_bloc/counter_bloc.dart';
+import 'package:bloc_counter/featurs/get_list_bloc/get_list_bloc.dart';
+import 'package:bloc_counter/ui/list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<CounterBloc>(
           create: (context) => CounterBloc(),
         ),
+        BlocProvider<GetListBloc>(create: (context) => GetListBloc())
       ],
       child: MaterialApp(
         title: 'Counter App',
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const CounterPage(),
+        home: const MyWidget(),
       ),
     );
   }
